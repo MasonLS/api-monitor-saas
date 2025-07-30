@@ -1,3 +1,5 @@
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MasonLS/api-monitor-saas)
+
 # API Monitor SaaS
 
 A simple, effective API monitoring service that helps developers track their API uptime and performance.
