@@ -10,11 +10,9 @@ services:
       - key: PYTHON_VERSION
         value: 3.10.0
       - key: DATABASE_PATH
-        value: /var/data/api_monitor.db
-    disk:
-      name: api-data
-      mountPath: /var/data
-      sizeGB: 1
+        value: /tmp/api_monitor.db
+      - key: FLASK_ENV
+        value: production
 
   # Background worker for monitoring
   - type: worker
@@ -27,8 +25,4 @@ services:
       - key: PYTHON_VERSION
         value: 3.10.0
       - key: DATABASE_PATH
-        value: /var/data/api_monitor.db
-    disk:
-      name: api-data
-      mountPath: /var/data
-      sizeGB: 1
+        value: /tmp/api_monitor.db
