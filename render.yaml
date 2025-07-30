@@ -1,7 +1,7 @@
 services:
-  # Web service for the dashboard
+  # Single web service that runs both dashboard and monitoring
   - type: web
-    name: api-monitor-dashboard
+    name: api-monitor
     runtime: python
     plan: free
     buildCommand: "pip install -r requirements.txt"
@@ -13,16 +13,3 @@ services:
         value: /tmp/api_monitor.db
       - key: FLASK_ENV
         value: production
-
-  # Background worker for monitoring
-  - type: worker
-    name: api-monitor-worker
-    runtime: python
-    plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python src/monitor.py"
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.10.0
-      - key: DATABASE_PATH
-        value: /tmp/api_monitor.db
