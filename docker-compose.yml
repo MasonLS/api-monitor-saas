@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  monitor:
+    build: .
+    command: python src/monitor.py
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_PATH=/app/data/api_monitor.db
+    restart: unless-stopped
+
+  dashboard:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_PATH=/app/data/api_monitor.db
+      - FLASK_ENV=production
+    depends_on:
+      - monitor
+    restart: unless-stopped
