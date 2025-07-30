@@ -1,0 +1,37 @@
+{
+  "name": "API Monitor SaaS",
+  "description": "Simple, effective API monitoring service",
+  "repository": "https://github.com/MasonLS/api-monitor-saas",
+  "logo": "https://raw.githubusercontent.com/MasonLS/api-monitor-saas/main/logo.png",
+  "keywords": ["python", "flask", "monitoring", "api", "uptime"],
+  "addons": [
+    {
+      "plan": "heroku-postgresql:mini"
+    }
+  ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "Secret key for session management",
+      "generator": "secret"
+    },
+    "FLASK_ENV": {
+      "description": "Flask environment",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "eco"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
